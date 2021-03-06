@@ -1,9 +1,10 @@
 package com.tts.ecommerce.controller;
 
+import com.tts.ecommerce.model.User;
 import com.tts.ecommerce.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,7 +33,7 @@ public class AuthenticationController {
 
         String password = user.getPassword();
         if(submit.equals("up")) {
-            if(userService.findByUserName(user.getUsername()) == null) {
+            if(userService.findByUsername(user.getUsername()) == null) {
                 userService.saveNew(user);
             } else {
                 bindingResult.rejectValue("username", "error.user", "Username is already taken");

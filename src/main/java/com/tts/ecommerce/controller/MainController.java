@@ -1,7 +1,7 @@
 package com.tts.ecommerce.controller;
 
 import com.tts.ecommerce.model.Product;
-import lombok.Data;
+import com.tts.ecommerce.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@Data
+
 @Controller
 @ControllerAdvice //This makes the `@ModelAttribute`s of this controller available to all controllers, for the navbar
-public class MainController<ProductService> {
+public class MainController {
     @Autowired
     ProductService productService;
 
@@ -29,11 +29,11 @@ public class MainController<ProductService> {
         return productService.findAll();
     }
 
-    @ModelAttribute("categories") {
+    @ModelAttribute("categories")
         public List<String> categories() {
             return productService.findDistinctCategories();
         }
-    }
+
 
     @ModelAttribute("brands")
     public List<String> brands() {

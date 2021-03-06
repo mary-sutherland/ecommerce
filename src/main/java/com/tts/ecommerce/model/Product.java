@@ -18,7 +18,6 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-//    @Column(name = "product_id")
     private Long id;
 
     private String name;
@@ -33,7 +32,7 @@ public class Product {
 
     private String description;
 
-    private List<MultipartFile> images;
+    private String imageUrl;
 
 
 
